@@ -1,57 +1,10 @@
 <template>
-  <div class="bg-[#1C2536] px-4">
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/">
+  <div class="bg-black px-2" style="background-color: black;">
+    <div v-for="link in links" class="mb-1">
+      <Link :class="isUrl(link.slug) ? 'bg-[#212121] text-white font-semibold' : 'text-gray-500' " class="group hover:bg-[#212121] hover:text-white rounded gap-4  flex items-center p-4" :href="link.url">
         <!-- <icon name="dashboard" class="mr-2 w-4 h-4" :class="isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/organizations">
-        <!-- <icon name="office" class="mr-2 w-4 h-4" :class="isUrl('organizations') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Agents</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/contacts">
-        <!-- <icon name="users" class="mr-2 w-4 h-4" :class="isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Customers</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Internal Chats</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Logs</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Lead Management</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Payment Audit</div>
-      </Link>
-    </div>
-    <div class="mb-1">
-      <Link class="group flex items-center py-3" href="/reports">
-        <!-- <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" /> -->
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">FAQs and articles</div>
+        <i :class="link.icon"></i>
+        <div >{{link.title}}</div>
       </Link>
     </div>
   </div>
@@ -60,11 +13,15 @@
 <script>
 import { Link } from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon.vue'
+import { dashboardLinks } from '../lib/data';
 
 export default {
   components: {
     Icon,
     Link,
+  },
+  created(){
+    this.links = dashboardLinks
   },
   methods: {
     isUrl(...urls) {

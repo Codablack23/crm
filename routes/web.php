@@ -1,12 +1,19 @@
 <?php
 
+use App\Http\Controllers\ApiKey;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Chats;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\Leads;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\Payment;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\Settings;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Wallets;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,6 +81,34 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 Route::get('organizations', [OrganizationsController::class, 'index'])
     ->name('organizations')
     ->middleware('auth');
+
+Route::get('/chats', [Chats::class, 'index'])
+->name('chats')
+->middleware('auth');
+
+Route::get('/wallet', [Wallets::class, 'index'])
+->name('wallet')
+->middleware('auth');
+
+Route::get('/payment-audit', [Payment::class, 'index'])
+->name('chats')
+->middleware('auth');
+
+Route::get('/logs', [LogController::class, 'index'])
+->name('wallet')
+->middleware('auth');
+
+Route::get('/settings', [Settings::class, 'index'])
+->name('wallet')
+->middleware('auth');
+
+Route::get('/leads', [Leads::class, 'index'])
+->name('wallet')
+->middleware('auth');
+
+Route::get('/api-keys', [ApiKey::class, 'index'])
+->name('wallet')
+->middleware('auth');
 
 Route::get('organizations/create', [OrganizationsController::class, 'create'])
     ->name('organizations.create')
