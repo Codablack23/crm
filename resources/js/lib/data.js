@@ -27,13 +27,13 @@ export const dashboardLinks = [
         id:4,
         url:"/contacts"
     },
-    {
-        title:"Reports",
-        slug:"reports",
-        icon:"bi bi-clipboard-data",
-        id:5,
-        url:"/reports"
-    },
+    // {
+    //     title:"Reports",
+    //     slug:"reports",
+    //     icon:"bi bi-clipboard-data",
+    //     id:5,
+    //     url:"/reports"
+    // },
     {
         title:"Internal Chats",
         slug:"chats",

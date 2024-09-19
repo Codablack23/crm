@@ -11,4 +11,7 @@ class Chats extends Controller
     public function index(): Response{
         return Inertia::render('chats/page');
     }
+    public function show($user): Response{
+        return Inertia::render('chats/details/page');
+    }
 }

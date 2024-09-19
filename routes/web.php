@@ -86,6 +86,10 @@ Route::get('/chats', [Chats::class, 'index'])
 ->name('chats')
 ->middleware('auth');
 
+Route::get('/chats/{chats}', [Chats::class, 'show'])
+->name('chats')
+->middleware('auth');
+
 Route::get('/wallet', [Wallets::class, 'index'])
 ->name('wallet')
 ->middleware('auth');
